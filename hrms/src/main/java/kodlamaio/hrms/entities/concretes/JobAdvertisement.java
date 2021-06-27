@@ -15,6 +15,9 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -63,6 +66,7 @@ public class JobAdvertisement {
 	private int numberOfOpenPosition;
 	
 	@Column(name = "application_deadline")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date applicationDeadline;
 	
 	@Column(name = "is_active")
