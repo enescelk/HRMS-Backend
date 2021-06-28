@@ -1,6 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,10 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,9 +45,10 @@ public class ForeignLangueage {
 	@Column(name = "level")
 	private int level;
 	
-    @JsonIgnore
-    @Column(name = "created_date")
-    private LocalDate createdDate = LocalDate.now();
+	@Column(name = "creation_date", updatable = false)
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date CreationDate;
 	
 	
 

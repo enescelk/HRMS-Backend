@@ -1,6 +1,7 @@
 package kodlamaio.hrms.entities.concretes;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,6 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -41,9 +46,10 @@ public class CurriculumVitae  {
 	@Column(name = "cover_letter")
 	private String coverLetter;
 	
-	@JsonIgnore
-	@Column(name = "created_Date")
-	private LocalDate createdDate = LocalDate.now();
+	@Column(name = "creation_date", updatable = false)
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date CreationDate;
 	
 	@OneToMany(mappedBy = "curriculumVitae")
 	@JsonIgnore
@@ -54,6 +60,7 @@ public class CurriculumVitae  {
 	private List<School> schools;
 	
 	@OneToMany(mappedBy = "curriculumVitae")
+	@JsonIgnore
 	private List<ForeignLangueage> foreignLangueages;
 	
 	

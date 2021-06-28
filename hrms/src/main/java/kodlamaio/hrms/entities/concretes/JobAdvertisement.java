@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -16,7 +17,6 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +28,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JobAdvertisement {
+	
 	@Id
 	@GeneratedValue(strategy =  GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -67,13 +68,11 @@ public class JobAdvertisement {
 	
 	@Column(name = "application_deadline")
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date applicationDeadline;
+	private LocalDate applicationDeadline;
 	
 	@Column(name = "is_active")
 	private boolean isActive;
-	
-	@Column(name = "creation_date", updatable = false)
-	@CreationTimestamp
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date CreationDate;
+
+	@Column(name = "creation_date")
+	private LocalDate creationDate;
 }
