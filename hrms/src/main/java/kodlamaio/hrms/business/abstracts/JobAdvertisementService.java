@@ -12,6 +12,7 @@ public interface JobAdvertisementService {
 	
 	DataResult<List<JobAdvertisement>> getAll();
 	DataResult<List<JobAdvertisement>> getAllSortedByActive();
+	DataResult<List<JobAdvertisement>> getAllSortedByActiveFalse();
 	DataResult<List<JobAdvertisement>> getAllSortedByDate();
 	
 	Result add(JobAdvertisementAddDto jobAdvertisementAddDto);

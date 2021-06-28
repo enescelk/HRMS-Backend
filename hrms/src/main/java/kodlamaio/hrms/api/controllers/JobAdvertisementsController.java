@@ -46,6 +46,11 @@ public class JobAdvertisementsController {
 		return this.jobAdvertisementService.getAllSortedByActive();
 	}
 	
+	@GetMapping("/getallbyactivefalse")
+	public DataResult<List<JobAdvertisement>> getAllSortedByActiveFalse(){;
+		return this.jobAdvertisementService.getAllSortedByActiveFalse();
+	}
+	
 	@GetMapping("/getallbydate")
 	public DataResult<List<JobAdvertisement>> getAllSortedByDate(){
 		return this.jobAdvertisementService.getAllSortedByDate();

@@ -56,6 +56,10 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	public DataResult<List<JobAdvertisement>> getAllSortedByActive() {
 		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByIsActive(), "Aktiflige gore listelendi");
 	}
+	@Override
+	public DataResult<List<JobAdvertisement>> getAllSortedByActiveFalse() {
+		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByIsAcitveFalse(), "Pasiflige gore listelendi");
+	}
 
 	@Override
 	public DataResult<List<JobAdvertisement>> getAllSortedByDate() {
@@ -98,5 +102,6 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		this.jobAdvertisementDao.delete(jobAdvertisement);
 		return new SuccessResult("Is ilani basariyla silindi.");
 	}
+
 
 }
